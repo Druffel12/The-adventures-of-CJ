@@ -13,6 +13,16 @@ struct CJ
 	//make actual abilities floats for deciaml values of their damage
 };
 
+struct Enemy
+{
+	int EnemyID = 0; // 0 - jock 1- nerd 2- goth  5- principle
+	int JockHP = 0;
+	int JockSTR = 0;
+	int JockDEX = 0;
+	int JockINT = 0;
+};
+
+
 struct Nerd
 {
 	int NerdHP = 20;
@@ -33,7 +43,7 @@ struct NerdB
 struct Jock
 {
 
-	int JockHP = 30;
+	int JockHP = 20;
 	int JockSTR = 12;
 	int JockDEX = 6;
 	int JockINT = 2;
@@ -93,15 +103,27 @@ struct Principal
 	int PrincipalINT = 18;
 };
 
-void attack()
+void attack(CJ &stat)
 {
-	CJ stat;
+	
 
-	float punch = (1.5 * stat.STR);
+	
 	float Pencil = (2.5 * stat.DEX);
 	float Protractor = (2 * stat.INT);
 	
 }
+void Punch(CJ &stat, Jock &keil)
+{
+	float damage = (1.5 * stat.STR);
+
+	keil.JockHP -= damage;
+
+	std::cout << "You hit the jock for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "	Enemy Health: " << keil.JockHP << std::endl;
+
+}
+
+
 
 int inputRange(int min, int max)
 {
@@ -155,6 +177,15 @@ int main()
 {
 	int i =0;
 	int SKP;
+	Jock enemy1;
+	Jock enemy2;
+	Jock enemy3;
+
+	Enemy jock1;
+	
+
+	Jock encouter[] = { enemy1, enemy2, enemy3 };
+
 	CJ stat;
 	stat.HP = 15;
 	stat.STR = 0;
@@ -174,8 +205,8 @@ int main()
 		
 	}
 
-	std::cout << "Now that thats done lets get to it \n" << "W will go onward S will go back to the last defeated enemy \n";
-	std::cout << "(Ya'know incase you wann train or whatever) \n";
+	std::cout << "Now that thats done lets get to it \n";
+	std::cout << "(Ya'know incase you wanna train or whatever) \n";
 	std::cout << "Side note: you must defeat 3 enemies to go to the boss \n";
 	std::cout << "1.Jocks \n" << "2.Drama \n" << "3.Nerds \n" << "4.Final Area \n";
 	int Area = 0;
@@ -185,7 +216,53 @@ int main()
 
 	if (Area == 1)
 	{
+		
 		std::cout << "Looks like we have dweeb in our midst boys! \n";
+		int R1 = 0;
+		while ( R1 < 3 )
+		{
+			bool defeat = false;
+			std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
+
+			while ( defeat == false )
+			{
+				int A1;
+				
+				
+
+				std::cout << "What will you do \n";
+				std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+				std::cin >> A1;
+				
+				if (A1 == 1)
+				{
+					Punch(stat, encouter[R1]);
+				}
+
+				else if (A1 == 2)
+				{
+					
+				}
+
+				else if (A1 == 3)
+				{
+					
+				}
+				else
+				{
+					std::cout << "What are you even trying to do? \n";
+				}
+
+				if (stat.HP <= 0 || encouter[R1].JockHP <= 0)
+				{
+					std::cout << "YOU WON THE ROUND!!" << std::endl;
+					defeat = true;
+				}
+
+			 
+			}
+			++R1;
+		}
 	}
 
 	else if (Area == 2)
