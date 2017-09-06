@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <random>
 struct CJ
 {
@@ -443,12 +444,18 @@ int main()
 					{
 						std::cout << "What are you even trying to do? \n";
 					}
-
-					if (stat.HP <= 0 || encounter1[R1].JockHP <= 0)
+					if (stat.HP <= 0)
+					{
+						std::cout << "you were stopped get back to class" << std::endl;
+						system("pause");
+						exit(0);
+					}
+					if (encounter1[R1].JockHP <= 0)
 					{
 						std::cout << "YOU WON THE ROUND!!" << std::endl;
 						defeat = true;
 					}
+					//Add vto all instances of fighting 
 
 
 				}
@@ -628,7 +635,9 @@ int main()
 				}
 				score + 1;
 			}
+		// make loop repeat as too have to fight alot
 		}
+
 		std::cout << "Congrats you escaped school and are effectively not learning";
 
 		system("pause");
