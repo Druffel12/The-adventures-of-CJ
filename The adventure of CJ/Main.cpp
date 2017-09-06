@@ -392,85 +392,149 @@ int main()
 
 	int score = 0;
 
-	while (score = 20)
-	{
+	
+
 		std::cout << "Now that thats done lets get to it \n";
-		std::cout << "(Ya'know incase you wanna train or whatever) \n";
-		std::cout << "Side note: you must defeat 3 enemies to go to the boss \n";
-		std::cout << "1.Jocks \n" << "2.Drama \n" << "3.Nerds \n" << "4.Final Area \n";
+		std::cout << "1.Jocks \n" << "2.Drama \n" << "3.Nerds \n" << "4.Teachers lounge \n";
 		int Area = 0;
 		int Score = 0;
 
 		std::cin >> Area;
-
-		if (Area == 1)
+		
+		while (score < 4)
 		{
 
-			std::cout << "Looks like we have dweeb in our midst boys! \n";
-			int R1 = 0;
-			while (R1 < 3)
+			if (Area == 1)
 			{
-				bool defeat = false;
-				std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
 
-				while (defeat == false)
+				std::cout << "Looks like we have dweeb in our midst boys! \n";
+				int R1 = 0;
+				while (R1 < 3)
 				{
-					int A1;
+					bool defeat = false;
+					std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
 
-
-
-					std::cout << "What will you do \n";
-					std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
-					std::cin >> A1;
-
-					if (A1 == 1)
+					while (defeat == false)
 					{
-						Punch(stat, encounter1[R1]);
-						JEnemyAttack(stat, encounter1[R1]);
-					}
-
-					else if (A1 == 2)
-					{
-						Pencil(stat, encounter1[R1]);
-						JEnemyAttack(stat, encounter1[R1]);
-					}
-
-					else if (A1 == 3)
-					{
-						Protractor(stat, encounter1[R1]);
-						JEnemyAttack(stat, encounter1[R1]);
-					}
-					else
-					{
-						std::cout << "What are you even trying to do? \n";
-					}
-					if (stat.HP <= 0)
-					{
-						std::cout << "you were stopped get back to class" << std::endl;
-						system("pause");
-						exit(0);
-					}
-					if (encounter1[R1].JockHP <= 0)
-					{
-						std::cout << "YOU WON THE ROUND!!" << std::endl;
-						defeat = true;
-					}
-					//Add vto all instances of fighting 
+						int A1;
 
 
+
+						std::cout << "What will you do \n";
+						std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+						std::cin >> A1;
+
+						if (A1 == 1)
+						{
+							Punch(stat, encounter1[R1]);
+							JEnemyAttack(stat, encounter1[R1]);
+						}
+
+						else if (A1 == 2)
+						{
+							Pencil(stat, encounter1[R1]);
+							JEnemyAttack(stat, encounter1[R1]);
+						}
+
+						else if (A1 == 3)
+						{
+							Protractor(stat, encounter1[R1]);
+							JEnemyAttack(stat, encounter1[R1]);
+						}
+						else
+						{
+							std::cout << "What are you even trying to do? \n";
+						}
+						if (stat.HP <= 0)
+						{
+							std::cout << "you were stopped get back to class" << std::endl;
+							system("pause");
+							exit(0);
+						}
+						if (encounter1[R1].JockHP <= 0)
+						{
+							std::cout << "YOU WON THE ROUND!!" << std::endl;
+							defeat = true;
+							score + 1;
+						} 
+
+					}
+					++R1;
 				}
-				++R1;
+				
 			}
-			score + 1;
-		}
 
-		else if (Area == 2)
-		{
-
-			if (Area == 2)
+			else if (Area == 2)
 			{
 
-				std::cout << "After this you wont need to improvise being in pain! \n";
+				if (Area == 2)
+				{
+
+					std::cout << "After this you wont need to improvise being in pain! \n";
+					int R1 = 0;
+					while (R1 < 3)
+					{
+						bool defeat = false;
+						std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
+
+						while (defeat == false)
+						{
+							int A2;
+
+
+
+							std::cout << "What will you do \n";
+							std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+							std::cin >> A2;
+
+							if (A2 == 1)
+							{
+								Punch(stat, encounter2[R1]);
+								DEnemyAttack(stat, encounter2[R1]);
+							}
+
+							else if (A2 == 2)
+							{
+								Pencil(stat, encounter2[R1]);
+								DEnemyAttack(stat, encounter2[R1]);
+							}
+
+							else if (A2 == 3)
+							{
+								Protractor(stat, encounter2[R1]);
+								DEnemyAttack(stat, encounter2[R1]);
+							}
+							else
+							{
+								std::cout << "What are you even trying to do? \n";
+
+							}
+							if (stat.HP <= 0)
+							{
+								std::cout << "you were stopped get back to class" << std::endl;
+								system("pause");
+								exit(0);
+							}
+
+							if (stat.HP <= 0 || encounter2[R1].Drama_GeekHP <= 0)
+							{
+								std::cout << "YOU WON THE ROUND!!" << std::endl;
+								defeat = true;
+								score + 1;
+							}
+
+
+						}
+						++R1;
+					}
+					
+				}
+			}
+
+			else if (Area == 3)
+			{
+
+				std::cout << "I bet you use a calculator disgraceful! \n";
 				int R1 = 0;
 				while (R1 < 3)
 				{
@@ -489,101 +553,51 @@ int main()
 
 						if (A2 == 1)
 						{
-							Punch(stat, encounter2[R1]);
-							DEnemyAttack(stat, encounter2[R1]);
+							Punch(stat, encounter3[R1]);
+							NEnemyAttack(stat, encounter3[R1]);
 						}
 
 						else if (A2 == 2)
 						{
-							Pencil(stat, encounter2[R1]);
-							DEnemyAttack(stat, encounter2[R1]);
+							Pencil(stat, encounter3[R1]);
+							NEnemyAttack(stat, encounter3[R1]);
 						}
 
 						else if (A2 == 3)
 						{
-							Protractor(stat, encounter2[R1]);
-							DEnemyAttack(stat, encounter2[R1]);
+							Protractor(stat, encounter3[R1]);
+							NEnemyAttack(stat, encounter3[R1]);
 						}
 						else
 						{
 							std::cout << "What are you even trying to do? \n";
 						}
+						if (stat.HP <= 0)
+						{
+							std::cout << "you were stopped get back to class" << std::endl;
+							system("pause");
+							exit(0);
+						}
 
-						if (stat.HP <= 0 || encounter2[R1].Drama_GeekHP <= 0)
+						if (stat.HP <= 0 || encounter3[R1].NerdHP <= 0)
 						{
 							std::cout << "YOU WON THE ROUND!!" << std::endl;
 							defeat = true;
+							score + 1;
 						}
 
 
 					}
 					++R1;
 				}
-				score + 1;
+			
+
+
 			}
-		}
 
-		else if (Area == 3)
-		{
-
-			std::cout << "I bet you use a calculator disgraceful! \n";
-			int R1 = 0;
-			while (R1 < 3)
+			else if (Area == 4)
 			{
-				bool defeat = false;
-				std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
 
-				while (defeat == false)
-				{
-					int A2;
-
-
-
-					std::cout << "What will you do \n";
-					std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
-					std::cin >> A2;
-
-					if (A2 == 1)
-					{
-						Punch(stat, encounter3[R1]);
-						NEnemyAttack(stat, encounter3[R1]);
-					}
-
-					else if (A2 == 2)
-					{
-						Pencil(stat, encounter3[R1]);
-						NEnemyAttack(stat, encounter3[R1]);
-					}
-
-					else if (A2 == 3)
-					{
-						Protractor(stat, encounter3[R1]);
-						NEnemyAttack(stat, encounter3[R1]);
-					}
-					else
-					{
-						std::cout << "What are you even trying to do? \n";
-					}
-
-					if (stat.HP <= 0 || encounter3[R1].NerdHP <= 0)
-					{
-						std::cout << "YOU WON THE ROUND!!" << std::endl;
-						defeat = true;
-					}
-
-
-				}
-				++R1;
-			}
-			score + 1;
-
-
-		}
-
-		else if (Area == 4)
-		{
-			if (score = 12);
-			{
 				std::cout << "What are you doing in the teachers lounge get to class. ";
 				int R1 = 0;
 				while (R1 < 3)
@@ -622,26 +636,33 @@ int main()
 						{
 							std::cout << "What are you even trying to do? \n";
 						}
+						if (stat.HP <= 0)
+						{
+							std::cout << "you were stopped get back to class" << std::endl;
+							system("pause");
+							exit(0);
+						}
 
 						if (stat.HP <= 0 || encounter2[R1].Drama_GeekHP <= 0)
 						{
 							std::cout << "YOU WON THE ROUND!!" << std::endl;
 							defeat = true;
+							++score;
 						}
-
 
 					}
 					++R1;
 				}
-				score + 1;
+				
 			}
-		// make loop repeat as too have to fight alot
 		}
-
-		std::cout << "Congrats you escaped school and are effectively not learning";
-
+		if (score == 4)
+		{
+			std::cout << "Congrats you escaped school and are effectively not learning \n";
+			exit(0);
+		}
 		system("pause");
-	}
+	
 }
 
 
