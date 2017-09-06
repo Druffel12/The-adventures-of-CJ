@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <random>
 struct CJ
 {
 	int HP = 0;
@@ -16,10 +16,14 @@ struct CJ
 struct Enemy
 {
 	int EnemyID = 0; // 0 - jock 1- nerd 2- goth  5- principle
-	int JockHP = 0;
-	int JockSTR = 0;
-	int JockDEX = 0;
-	int JockINT = 0;
+	char Type[12];
+	int HP = 0;
+	int STR = 0;
+	int DEX = 0;
+	int INT = 0;
+
+	
+	
 };
 
 
@@ -103,7 +107,7 @@ struct Principal
 	int PrincipalINT = 18;
 };
 
-void attack(CJ &stat)
+void attack(CJ & stat)
 {
 	
 
@@ -112,7 +116,36 @@ void attack(CJ &stat)
 	float Protractor = (2 * stat.INT);
 	
 }
-void Punch(CJ &stat, Jock &keil)
+void Punch(CJ & stat, Drama_Geek & keil)
+{
+	float damage = (1.5 * stat.STR);
+
+	keil.Drama_GeekHP -= damage;
+
+	std::cout << "You hit the Drama_Geek for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "	Enemy Health: " << keil.Drama_GeekHP<< std::endl;
+
+}
+void Pencil(CJ & stat, Drama_Geek & keil)
+{
+	float damage = (2.5 * stat.DEX);
+
+	keil.Drama_GeekHP -= damage;
+
+	std::cout << "You stabbed the Drama_Geek for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "   Enemy Health: " << keil.Drama_GeekHP << std::endl;
+
+}
+void Protractor(CJ & stat, Drama_Geek & keil)
+{
+	float damage = (2 * stat.INT);
+
+	keil.Drama_GeekHP -= damage;
+	std::cout << "You shot the Drama_Geek for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "   Enemy Health: " << keil.Drama_GeekHP << std::endl;
+}
+
+void Punch(CJ & stat, Jock & keil)
 {
 	float damage = (1.5 * stat.STR);
 
@@ -121,6 +154,143 @@ void Punch(CJ &stat, Jock &keil)
 	std::cout << "You hit the jock for " << damage << " damage!" << std::endl;
 	std::cout << "Your health: " << stat.HP << "	Enemy Health: " << keil.JockHP << std::endl;
 
+}
+void Pencil(CJ & stat, Jock & keil)
+{
+	float damage = (2.5 * stat.DEX);
+
+	std::cout << "You stabbed the jock for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "   Enemy Health: " << keil.JockHP << std::endl;
+
+}
+void Protractor(CJ & stat, Jock & keil)
+{
+	float damage = (2 * stat.INT);
+
+	std::cout << "You shot the jock for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "   Enemy Health: " << keil.JockHP << std::endl;
+}
+
+void JEnemyAttack(CJ &p, Jock &e)
+{
+	
+	int rando = rand() % 3 + 1;
+	float damage;
+	switch (rando)
+	{
+	case 1: 
+		//strength attack
+		damage = (1.5 * e.JockSTR);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.JockHP << std::endl;
+		break;
+	case 2:
+		damage = (2.5 * e.JockDEX);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.JockHP << std::endl;
+		break;
+	case 3:
+		damage = (2 * e.JockINT);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.JockHP << std::endl;
+		break;
+	}
+
+
+}
+
+void DEnemyAttack(CJ &p, Drama_Geek &e)
+{
+
+	int rando = rand() % 3 + 1;
+	float damage;
+	switch (rando)
+	{
+	case 1:
+		//strength attack
+		damage = (1.5 * e.Drama_GeekSTR);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.Drama_GeekHP << std::endl;
+		break;
+	case 2:
+		damage = (2.5 * e.Drama_GeekDEX);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.Drama_GeekHP << std::endl;
+		break;
+	case 3:
+		damage = (2 * e.Drama_GeekINT);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.Drama_GeekHP << std::endl;
+		break;
+	}
+
+
+}
+
+void NEnemyAttack(CJ &p, Nerd &e)
+{
+
+	int rando = rand() % 3 + 1;
+	float damage;
+	switch (rando)
+	{
+	case 1:
+		//strength attack
+		damage = (1.5 * e.NerdSTR);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.NerdHP << std::endl;
+		break;
+	case 2:
+		damage = (2.5 * e.NerdDEX);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.NerdHP << std::endl;
+		break;
+	case 3:
+		damage = (2 * e.NerdINT);
+		p.HP -= damage;
+		std::cout << "The Jock hit us for " << damage << " damage!" << std::endl;
+		std::cout << "Your health: " << p.HP << "   Enemy Health: " << e.NerdHP << std::endl;
+		break;
+	}
+
+
+}
+
+void Punch(CJ & stat, Nerd & keil)
+{
+	float damage = (1.5 * stat.STR);
+
+	keil.NerdHP -= damage;
+
+	std::cout << "You hit the Nerd for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "	Enemy Health: " << keil.NerdHP << std::endl;
+
+}
+void Pencil(CJ & stat, Nerd & keil)
+{
+	float damage = (2.5 * stat.DEX);
+
+	keil.NerdHP -= damage;
+
+	std::cout << "You stabbed the Nerd for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "   Enemy Health: " << keil.NerdHP << std::endl;
+
+}
+void Protractor(CJ & stat, Nerd & keil)
+{
+	float damage = (2 * stat.INT);
+
+	keil.NerdHP -= damage;
+	std::cout << "You shot the Nerd for " << damage << " damage!" << std::endl;
+	std::cout << "Your health: " << stat.HP << "   Enemy Health: " << keil.NerdHP << std::endl;
 }
 
 
@@ -175,114 +345,294 @@ void levelUp(CJ &stat)
 
 int main()
 {
-	int i =0;
+	int i = 0;
 	int SKP;
-	Jock enemy1;
-	Jock enemy2;
-	Jock enemy3;
+	Jock Jenemy1;
+	Jock Jenemy2;
+	Jock Jenemy3;
+
+	Drama_Geek Denemy1;
+	Drama_Geek Denemy2;
+	Drama_Geek Denemy3;
+
+	Nerd Nenemy1;
+	Nerd Nenemy2;
+	Nerd Nenemy3;
+
+	Teacher Tenemy1;
+	Teacher Tenemy2;
+	Teacher Tenemy3;
 
 	Enemy jock1;
-	
 
-	Jock encouter[] = { enemy1, enemy2, enemy3 };
+	Jock encounter1[] = { Jenemy1, Jenemy2, Jenemy3 };
+	Drama_Geek encounter2[] = { Denemy1, Denemy2, Denemy3 };
+	Nerd encounter3[] = { Nenemy1, Nenemy2, Nenemy3 };
+	Teacher encounter4[] = { Tenemy1, Tenemy2, Tenemy3 };
 
 	CJ stat;
-	stat.HP = 15;
+	stat.HP = 25;
 	stat.STR = 0;
 	stat.DEX = 0;
 	stat.INT = 0;
 
-		std::cout << "Welcome to CJ's Adventure" << std::endl;
-		std::cout << "Your goal is to skip class" << std::endl;
-		std::cout << "Here's 10 free skill points use them how you will" << std::endl;
-		
+	std::cout << "Welcome to CJ's Adventure" << std::endl;
+	std::cout << "Your goal is to skip class" << std::endl;
+	std::cout << "Here's 10 free skill points use them how you will" << std::endl;
+
 	while (i < 10)
 	{
 		++i;
-		
-		
+
+
 		levelUp(stat);
-		
+
 	}
 
-	std::cout << "Now that thats done lets get to it \n";
-	std::cout << "(Ya'know incase you wanna train or whatever) \n";
-	std::cout << "Side note: you must defeat 3 enemies to go to the boss \n";
-	std::cout << "1.Jocks \n" << "2.Drama \n" << "3.Nerds \n" << "4.Final Area \n";
-	int Area = 0;
-	int Score = 0;
+	int score = 0;
 
-	std::cin >> Area;
-
-	if (Area == 1)
+	while (score = 20)
 	{
-		
-		std::cout << "Looks like we have dweeb in our midst boys! \n";
-		int R1 = 0;
-		while ( R1 < 3 )
+		std::cout << "Now that thats done lets get to it \n";
+		std::cout << "(Ya'know incase you wanna train or whatever) \n";
+		std::cout << "Side note: you must defeat 3 enemies to go to the boss \n";
+		std::cout << "1.Jocks \n" << "2.Drama \n" << "3.Nerds \n" << "4.Final Area \n";
+		int Area = 0;
+		int Score = 0;
+
+		std::cin >> Area;
+
+		if (Area == 1)
 		{
-			bool defeat = false;
-			std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
 
-			while ( defeat == false )
+			std::cout << "Looks like we have dweeb in our midst boys! \n";
+			int R1 = 0;
+			while (R1 < 3)
 			{
-				int A1;
-				
-				
+				bool defeat = false;
+				std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
 
-				std::cout << "What will you do \n";
-				std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
-				std::cin >> A1;
-				
-				if (A1 == 1)
+				while (defeat == false)
 				{
-					Punch(stat, encouter[R1]);
-				}
+					int A1;
 
-				else if (A1 == 2)
-				{
-					
-				}
 
-				else if (A1 == 3)
-				{
-					
-				}
-				else
-				{
-					std::cout << "What are you even trying to do? \n";
-				}
 
-				if (stat.HP <= 0 || encouter[R1].JockHP <= 0)
-				{
-					std::cout << "YOU WON THE ROUND!!" << std::endl;
-					defeat = true;
-				}
+					std::cout << "What will you do \n";
+					std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+					std::cin >> A1;
 
-			 
+					if (A1 == 1)
+					{
+						Punch(stat, encounter1[R1]);
+						JEnemyAttack(stat, encounter1[R1]);
+					}
+
+					else if (A1 == 2)
+					{
+						Pencil(stat, encounter1[R1]);
+						JEnemyAttack(stat, encounter1[R1]);
+					}
+
+					else if (A1 == 3)
+					{
+						Protractor(stat, encounter1[R1]);
+						JEnemyAttack(stat, encounter1[R1]);
+					}
+					else
+					{
+						std::cout << "What are you even trying to do? \n";
+					}
+
+					if (stat.HP <= 0 || encounter1[R1].JockHP <= 0)
+					{
+						std::cout << "YOU WON THE ROUND!!" << std::endl;
+						defeat = true;
+					}
+
+
+				}
+				++R1;
 			}
-			++R1;
+			score + 1;
 		}
-	}
 
-	else if (Area == 2)
-	{
-		std::cout << "After this you wont need to improvise being in pain! \n";
-	}
+		else if (Area == 2)
+		{
 
-	else if (Area == 3)
-	{
-		std::cout << "I bet your pleb ass has to use a calculator disgraceful! \n";
-	}
-	
-	else if (Area == 4)
-	{
-		
-	}
+			if (Area == 2)
+			{
+
+				std::cout << "After this you wont need to improvise being in pain! \n";
+				int R1 = 0;
+				while (R1 < 3)
+				{
+					bool defeat = false;
+					std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
+
+					while (defeat == false)
+					{
+						int A2;
 
 
+
+						std::cout << "What will you do \n";
+						std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+						std::cin >> A2;
+
+						if (A2 == 1)
+						{
+							Punch(stat, encounter2[R1]);
+							DEnemyAttack(stat, encounter2[R1]);
+						}
+
+						else if (A2 == 2)
+						{
+							Pencil(stat, encounter2[R1]);
+							DEnemyAttack(stat, encounter2[R1]);
+						}
+
+						else if (A2 == 3)
+						{
+							Protractor(stat, encounter2[R1]);
+							DEnemyAttack(stat, encounter2[R1]);
+						}
+						else
+						{
+							std::cout << "What are you even trying to do? \n";
+						}
+
+						if (stat.HP <= 0 || encounter2[R1].Drama_GeekHP <= 0)
+						{
+							std::cout << "YOU WON THE ROUND!!" << std::endl;
+							defeat = true;
+						}
+
+
+					}
+					++R1;
+				}
+				score + 1;
+			}
+		}
+
+		else if (Area == 3)
+		{
+
+			std::cout << "I bet you use a calculator disgraceful! \n";
+			int R1 = 0;
+			while (R1 < 3)
+			{
+				bool defeat = false;
+				std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
+
+				while (defeat == false)
+				{
+					int A2;
+
+
+
+					std::cout << "What will you do \n";
+					std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+					std::cin >> A2;
+
+					if (A2 == 1)
+					{
+						Punch(stat, encounter3[R1]);
+						NEnemyAttack(stat, encounter3[R1]);
+					}
+
+					else if (A2 == 2)
+					{
+						Pencil(stat, encounter3[R1]);
+						NEnemyAttack(stat, encounter3[R1]);
+					}
+
+					else if (A2 == 3)
+					{
+						Protractor(stat, encounter3[R1]);
+						NEnemyAttack(stat, encounter3[R1]);
+					}
+					else
+					{
+						std::cout << "What are you even trying to do? \n";
+					}
+
+					if (stat.HP <= 0 || encounter3[R1].NerdHP <= 0)
+					{
+						std::cout << "YOU WON THE ROUND!!" << std::endl;
+						defeat = true;
+					}
+
+
+				}
+				++R1;
+			}
+			score + 1;
+
+
+		}
+
+		else if (Area == 4)
+		{
+			if (score = 12);
+			{
+				std::cout << "What are you doing in the teachers lounge get to class. ";
+				int R1 = 0;
+				while (R1 < 3)
+				{
+					bool defeat = false;
+					std::cout << "let the fight begin!! \n" << "Round: " << R1 + 1 << std::endl;
+
+					while (defeat == false)
+					{
+						int A2;
+
+
+
+						std::cout << "What will you do \n";
+						std::cout << "1. Punch \n" << "2. Pencil \n" << "3. Protractor \n";
+						std::cin >> A2;
+
+						if (A2 == 1)
+						{
+							Punch(stat, encounter2[R1]);
+							DEnemyAttack(stat, encounter2[R1]);
+						}
+
+						else if (A2 == 2)
+						{
+							Pencil(stat, encounter2[R1]);
+							DEnemyAttack(stat, encounter2[R1]);
+						}
+
+						else if (A2 == 3)
+						{
+							Protractor(stat, encounter2[R1]);
+							DEnemyAttack(stat, encounter2[R1]);
+						}
+						else
+						{
+							std::cout << "What are you even trying to do? \n";
+						}
+
+						if (stat.HP <= 0 || encounter2[R1].Drama_GeekHP <= 0)
+						{
+							std::cout << "YOU WON THE ROUND!!" << std::endl;
+							defeat = true;
+						}
+
+
+					}
+					++R1;
+				}
+				score + 1;
+			}
+		}
+		std::cout << "Congrats you escaped school and are effectively not learning";
 
 		system("pause");
+	}
 }
 
 
